@@ -12,6 +12,7 @@ export function Signup(){
     function handleSubmit(e: FormEvent) {
         e.preventDefault()
         if(signup.isLoading) return 
+
         const username = userNameRef.current?.value
         const name = nameRef.current?.value
         const imageUrl = imageUrlRef.current?.value
@@ -24,7 +25,7 @@ export function Signup(){
     }
 
     return <>
-    <h1 className="text-3xl font-bold mb-8 text-center">Signup</h1>
+    <h1 className="text-3xl font-bold mb-8 text-center">Sign up</h1>
     <form onSubmit = {handleSubmit} className="grid grid-cols-[auto,1fr] gap-x-3 gap-y-5 items-center justify-items-end">
         <label htmlFor="userName">UseName</label>
         <Input id="userName" pattern="\S*" required ref={userNameRef}/>
