@@ -28,6 +28,10 @@ export function useAuth() {
     return useContext(Context) as AuthContext
 }
 
+export function useLoggedInAuth() {
+    return useContext(Context) as AuthContext & Required<Pick<AuthContext, "user">>
+}
+
 type AuthProviderProps = {
     children: ReactNode
 }
@@ -37,8 +41,6 @@ export function AuthProvider({children}: AuthProviderProps) {
     const [ user, setUser ] = useState<User>()
     const [ token, setToken ] = useState<string>()
     const [ streamChat, setStreamChat ] = useState<StreamChat>()
-
-
 
     const signup = useMutation({
         mutationFn: (user: User ) => {
